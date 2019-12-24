@@ -31,6 +31,8 @@ def extract_job(html):
         else:
             company = str(company.string)
         company = company.strip()
+    else:
+            company = None
     location = html.find("div", {"class", "recJobLoc"})["data-rc-loc"]
     job_id = html["data-jk"]
     return {'title': title, 'company': company, 'location': location, 'link': f"https//www.indeed.com/view?jk={job_id}"}
@@ -46,7 +48,6 @@ def extract_jobs(last_page):
         for result in results:
             job = extract_job(result)
             jobs.append(job)
-            # print(job)
     return jobs
 
 def get_jobs():
