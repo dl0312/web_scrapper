@@ -15,7 +15,7 @@ def extract_job(html):
     company = html.find("h3").find("span").get_text(strip=True).strip("-")
     location = html.find("h3").find("span", {"class": "fc-black-500"}).get_text(strip=True).strip("-").strip(" \r").strip("\n")
     job_id = html['data-jobid']
-    return {'title': title, 'company': company, 'location': location, "apply_link": f"https://stackoverflow.com/jobs/{job_id}"}
+    return {'title': title, 'company': company, 'location': location, "link": f"https://stackoverflow.com/jobs/{job_id}"}
 
 def extract_jobs(last_page):
     jobs = []
